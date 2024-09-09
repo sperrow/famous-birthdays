@@ -21,13 +21,11 @@ const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
         <Dialog.Root>
             <div className="hidden">
                 <Dialog.Trigger ref={buttonRef}>
-                    <Button size="3" variant="soft">
-                        Incorrect
-                    </Button>
+                    <Button>Incorrect</Button>
                 </Dialog.Trigger>
             </div>
 
-            <Dialog.Content size="3" maxWidth="450px">
+            <Dialog.Content size="3" maxWidth="450px" aria-describedby={undefined}>
                 <Dialog.Title>Incorrect</Dialog.Title>
                 <Text>Try Again</Text>
             </Dialog.Content>

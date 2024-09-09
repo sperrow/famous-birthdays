@@ -35,30 +35,29 @@ export default function Game({ people }: Props) {
 
     return (
         <>
-            <Card mb="4" className="drop-shadow-lg">
-                <Box p="4" className=" text-center">
-                    <Badge size="2" color="red">
-                        <ArrowTopRightIcon />
-                        Most Famous
-                    </Badge>
-                    <Box p="4">
-                        <SortableList items={shuffledPeople} onDragEnd={setShuffledPeople} />
-                    </Box>
-                    <Badge size="2" color="yellow">
-                        <ArrowBottomRightIcon />
-                        Least Famous
-                    </Badge>
-                </Box>
-            </Card>
-            <Card className="drop-shadow-lg">
-                <Flex p="4" direction="column" justify="center" align="center" gap="4">
-                    <Button size="2" onClick={handleSubmit}>
-                        Submit
-                    </Button>
-                    <SolutionDialog people={people} />
-                    <IncorrectDialog ref={incorrectDialogRef} />
-                </Flex>
-            </Card>
+            <div className="mt-8 flex justify-center">
+                <Badge size="2" color="red">
+                    <ArrowTopRightIcon />
+                    Most Famous
+                </Badge>
+            </div>
+            <div className="my-6">
+                <SortableList items={shuffledPeople} onDragEnd={setShuffledPeople} />
+            </div>
+            <div className="mb-4 flex justify-center">
+                <Badge size="2" color="yellow">
+                    <ArrowBottomRightIcon />
+                    Least Famous
+                </Badge>
+            </div>
+            <Flex p="4" justify="center" align="center" gap="4">
+                <Button size="2" highContrast onClick={handleSubmit}>
+                    Submit
+                </Button>
+                <SolutionDialog people={people} />
+                <IncorrectDialog ref={incorrectDialogRef} />
+            </Flex>
+            {/* </Card> */}
         </>
     );
 }

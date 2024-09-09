@@ -11,12 +11,12 @@ export default function SolutionDialog({ people }: Props) {
     return (
         <Dialog.Root>
             <Dialog.Trigger>
-                <Button size="1" variant="soft">
+                <Button size="2" variant="soft" highContrast>
                     Solution
                 </Button>
             </Dialog.Trigger>
 
-            <Dialog.Content maxWidth="450px">
+            <Dialog.Content maxWidth="450px" aria-describedby={undefined}>
                 <Dialog.Title>Who is more famousbirthdays.com?</Dialog.Title>
 
                 <Flex direction="column" gap="3">

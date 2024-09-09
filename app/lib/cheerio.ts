@@ -24,7 +24,7 @@ export async function getData(date: string) {
             people.push(person);
         });
         // Logs people array to the console
-        console.dir(people);
+        // console.dir(people);
     } catch (err) {
         console.error(err);
     }

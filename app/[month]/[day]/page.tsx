@@ -17,8 +17,6 @@ export default async function Page({ params: { day, month } }: { params: { day: 
     let people = await fetchBirthdays(date);
     if (!people) {
         console.log('no data');
-    } else {
-        console.log(people);
     }
     people = randomize(people);
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);

@@ -8,6 +8,8 @@ import {
     useSensor,
     useSensors,
     DragEndEvent,
+    DragStartEvent,
+    DragOverlay,
 } from '@dnd-kit/core';
 import {
     arrayMove,
@@ -18,6 +20,8 @@ import {
 
 import SortableItem from './sortableItem';
 import { Person } from '@/app/lib/definitions';
+import { useEffect, useMemo, useState } from 'react';
+import Item from './item';
 
 type Props = {
     items: Person[];
@@ -25,6 +29,8 @@ type Props = {
 };
 
 export default function SortableList({ items, onDragEnd }: Props) {
+    // for drag overlay
+    const [activeItem, setActiveItem] = useState<Person>();
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -33,16 +39,26 @@ export default function SortableList({ items, onDragEnd }: Props) {
     );
 
     return (
-        <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+        >
             <SortableContext items={items} strategy={verticalListSortingStrategy}>
-                <ul className="flex flex-col gap-6">
-                    {items.map((person, idx) => (
-                        <SortableItem key={person.id} person={person} idx={idx} />
-                    ))}
-                </ul>
+                {items.map((person) => (
+                    <SortableItem key={person.id} person={person} />
+                ))}
             </SortableContext>
+            <DragOverlay>{activeItem ? <Item person={activeItem} /> : null}</DragOverlay>
         </DndContext>
     );
+
+    function handleDragStart(event: DragStartEvent) {
+        const { active } = event;
+        const person = items.find((item) => item.id === active.id);
+        setActiveItem(person);
+    }
 
     function handleDragEnd(event: DragEndEvent) {
         const { active, over } = event;
