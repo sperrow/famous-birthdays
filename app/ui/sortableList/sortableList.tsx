@@ -1,36 +1,25 @@
-'use client';
+import React, { useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
+import { DndContext, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import type { Active, UniqueIdentifier } from '@dnd-kit/core';
+import { SortableContext, arrayMove, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
-import {
-    DndContext,
-    closestCenter,
-    KeyboardSensor,
-    PointerSensor,
-    useSensor,
-    useSensors,
-    DragEndEvent,
-    DragStartEvent,
-    DragOverlay,
-} from '@dnd-kit/core';
-import {
-    arrayMove,
-    SortableContext,
-    sortableKeyboardCoordinates,
-    verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
+import SortableOverlay from './sortableOverlay';
+import { SortableItem, DragHandle } from './sortableItem';
 
-import SortableItem from './sortableItem';
-import { Person } from '@/app/lib/definitions';
-import { useEffect, useMemo, useState } from 'react';
-import Item from './item';
+interface BaseItem {
+    id: UniqueIdentifier;
+}
 
-type Props = {
-    items: Person[];
-    onDragEnd: (items: Person[]) => void;
-};
+interface Props<T extends BaseItem> {
+    items: T[];
+    onChange(items: T[]): void;
+    renderItem(item: T): ReactNode;
+}
 
-export default function SortableList({ items, onDragEnd }: Props) {
-    // for drag overlay
-    const [activeItem, setActiveItem] = useState<Person>();
+export default function SortableList<T extends BaseItem>({ items, onChange, renderItem }: Props<T>) {
+    const [active, setActive] = useState<Active | null>(null);
+    const activeItem = useMemo(() => items.find((item) => item.id === active?.id), [active, items]);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -41,36 +30,33 @@ export default function SortableList({ items, onDragEnd }: Props) {
     return (
         <DndContext
             sensors={sensors}
-            collisionDetection={closestCenter}
-            onDragStart={handleDragStart}
-            onDragEnd={handleDragEnd}
+            onDragStart={({ active }) => {
+                setActive(active);
+            }}
+            onDragEnd={({ active, over }) => {
+                if (over && active.id !== over?.id) {
+                    const activeIndex = items.findIndex(({ id }) => id === active.id);
+                    const overIndex = items.findIndex(({ id }) => id === over.id);
+
+                    onChange(arrayMove(items, activeIndex, overIndex));
+                }
+                setActive(null);
+            }}
+            onDragCancel={() => {
+                setActive(null);
+            }}
         >
-            <SortableContext items={items} strategy={verticalListSortingStrategy}>
-                {items.map((person) => (
-                    <SortableItem key={person.id} person={person} />
-                ))}
+            <SortableContext items={items}>
+                <ul className="SortableList" role="application">
+                    {items.map((item) => (
+                        <React.Fragment key={item.id}>{renderItem(item)}</React.Fragment>
+                    ))}
+                </ul>
             </SortableContext>
-            <DragOverlay>{activeItem ? <Item person={activeItem} /> : null}</DragOverlay>
+            <SortableOverlay>{activeItem ? renderItem(activeItem) : null}</SortableOverlay>
         </DndContext>
     );
-
-    function handleDragStart(event: DragStartEvent) {
-        const { active } = event;
-        const person = items.find((item) => item.id === active.id);
-        setActiveItem(person);
-    }
-
-    function handleDragEnd(event: DragEndEvent) {
-        const { active, over } = event;
-        const activeId = active?.id;
-        const overId = over?.id;
-        if (activeId && overId && activeId !== overId) {
-            const oldIndex = items.findIndex((person) => person.id === activeId);
-            const newIndex = items.findIndex((person) => person.id === overId);
-            console.log(oldIndex, newIndex);
-
-            const updatedListItems = arrayMove(items, oldIndex, newIndex);
-            onDragEnd(updatedListItems);
-        }
-    }
 }
+
+SortableList.Item = SortableItem;
+SortableList.DragHandle = DragHandle;

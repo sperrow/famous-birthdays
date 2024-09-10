@@ -5,29 +5,32 @@ import { Box, Badge, Button, Callout, Flex, Card } from '@radix-ui/themes';
 import { useState, useEffect, useRef } from 'react';
 import SortableList from './sortableList/sortableList';
 import { checkSubmission, shuffle } from '../lib/utils';
-import SolutionDialog from './solutionDialog';
+import SolutionDialog, { SolutionDialogRef } from './solutionDialog';
 import { ArrowBottomRightIcon, ArrowTopRightIcon } from '@radix-ui/react-icons';
 import IncorrectDialog, { IncorrectDialogRef } from './incorrectDialog';
+import Item from './sortableList/item';
 
 type Props = {
     people: Person[];
 };
 
 export default function Game({ people }: Props) {
-    const [shuffledPeople, setShuffledPeople] = useState<Person[]>([]);
+    const [sortedPeople, setSortedPeople] = useState<Person[]>([]);
+    const solutionDialogRef = useRef<SolutionDialogRef>(null);
     const incorrectDialogRef = useRef<IncorrectDialogRef>(null);
 
     // Ensure that the component renders the same content server-side as it does during the initial client-side render to prevent a hydration mismatch.
     useEffect(() => {
         const shuffled = shuffle(people);
-        setShuffledPeople(shuffled);
+        setSortedPeople(shuffled);
     }, [people]);
 
     const handleSubmit = () => {
-        console.log(shuffledPeople);
-        const submission = checkSubmission(shuffledPeople);
-        console.log('submission', submission);
-        if (!submission) {
+        const submission = checkSubmission(sortedPeople);
+        if (submission) {
+            console.log('correct');
+            solutionDialogRef.current?.open();
+        } else {
             console.log('incorrect');
             incorrectDialogRef.current?.open();
         }
@@ -41,8 +44,21 @@ export default function Game({ people }: Props) {
                     Most Famous
                 </Badge>
             </div>
-            <div className="my-6">
-                <SortableList items={shuffledPeople} onDragEnd={setShuffledPeople} />
+            <div className="my-2">
+                <SortableList
+                    items={sortedPeople}
+                    onChange={setSortedPeople}
+                    renderItem={(item: Person) => (
+                        <SortableList.Item id={item.id}>
+                            <Card className="drop-shadow-lg w-full">
+                                <Flex gap="4" align="center" justify="between">
+                                    <Item person={item} />
+                                    <SortableList.DragHandle />
+                                </Flex>
+                            </Card>
+                        </SortableList.Item>
+                    )}
+                />
             </div>
             <div className="mb-4 flex justify-center">
                 <Badge size="2" color="yellow">
@@ -54,10 +70,9 @@ export default function Game({ people }: Props) {
                 <Button size="2" highContrast onClick={handleSubmit}>
                     Submit
                 </Button>
-                <SolutionDialog people={people} />
+                <SolutionDialog ref={solutionDialogRef} people={people} />
                 <IncorrectDialog ref={incorrectDialogRef} />
             </Flex>
-            {/* </Card> */}
         </>
     );
 }
