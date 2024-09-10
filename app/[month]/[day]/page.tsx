@@ -25,7 +25,7 @@ export default async function Page({ params: { day, month } }: { params: { day: 
         <main className="">
             <Container size="2" p="4">
                 <Card mb="4" className="drop-shadow-lg">
-                    <Flex align="start" justify="between" p="4">
+                    <Flex align="start" justify="between" p="2">
                         <Image
                             src="/famous-birthdays-star-200.webp"
                             alt="star"
@@ -34,7 +34,7 @@ export default async function Page({ params: { day, month } }: { params: { day: 
                             priority
                             className="-scale-x-100"
                         ></Image>
-                        <Heading as="h1" align="center" m="4">
+                        <Heading as="h1" align="center">
                             Who is more famousbirthdays.com on&nbsp;{capitalizedMonth}&nbsp;{day}?
                         </Heading>
                         <Image src="/famous-birthdays-star-200.webp" alt="star" width="30" height="30" priority></Image>
