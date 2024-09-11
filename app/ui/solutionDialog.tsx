@@ -13,7 +13,8 @@ export type SolutionDialogRef = {
     open: () => void;
 };
 
-const colors = ['bg-red-400', 'bg-red-300', 'bg-red-200', 'bg-red-100'];
+// const colors = ['bg-yellow-300', 'bg-yellow-200', 'bg-yellow-100', 'bg-yellow-50'];
+const colors = ['bg-yellow-300'];
 
 const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -43,10 +44,11 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
             </Dialog.Trigger>
 
             <Dialog.Content maxWidth="450px" aria-describedby={undefined}>
-                <Dialog.Title>{title}</Dialog.Title>
+                <Dialog.Title align="center">{title}</Dialog.Title>
 
-                <Flex direction="column" gap="3">
-                    <ol className="flex flex-col py-4">
+                <Flex direction="column" gap="3" py="4">
+                    {/* <ol className="flex flex-col"> */}
+                    <ol className="flex flex-col divide-y-2 divide-yellow-300 border-2 border-yellow-300">
                         {people.map((person, idx) => (
                             <li key={idx} className={colors[idx]}>
                                 <Flex p="4">

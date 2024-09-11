@@ -13,13 +13,14 @@ export async function getData(date: string) {
         const peopleItems = $('.tile__item a');
         // Use .each method to loop through the elements we selected
         peopleItems.each((idx, el) => {
-            const person: Person = { id: '', name: '', img: '', description: '', rank: '' };
+            const person: Person = { id: '', name: '', img: '', description: '', rank: '', url: '' };
             const name = $(el).find('p').eq(0).text().trim();
             person.name = name;
             person.id = person.name.split(' ').join('-');
             person.img = $(el).find('.tile__picture img')?.attr('src') || '';
             person.description = $(el).find('.tile__description').text();
             person.rank = $(el).find('.tile__star-ranking span').text();
+            person.url = $(el).attr('href') || '';
             // Populate array with person data
             people.push(person);
         });

@@ -14,6 +14,11 @@ export const filterBirthdays = (people: Person[]) => {
     });
 };
 
+/**
+ * Random selection of people based on tiers
+ * @param people
+ * @returns array of people
+ */
 export const randomize = (people: Person[]) => {
     const result = [];
     const first = Math.floor(Math.random() * 10);
@@ -33,18 +38,27 @@ export const randomize = (people: Person[]) => {
     return result.sort((a, b) => parseInt(a.rank, 10) - parseInt(b.rank, 10));
 };
 
+/**
+ * Shuffle array of people
+ * @param people
+ * @returns shuffled array
+ */
 export const shuffle = (people: Person[]) => {
     return people.slice().sort(() => 0.5 - Math.random());
 };
 
-export const checkSubmission = (people: Person[]) => {
-    let lowest = 0;
+/**
+ * Check how many people are ranked correctly
+ * @param people
+ * @param sortedPeople
+ * @returns number of correct submissions
+ */
+export const checkSubmission = (people: Person[], sortedPeople: Person[]): number => {
+    let count = 0;
     for (let i = 0; i < people.length; i++) {
-        const rank = parseInt(people[i].rank, 10);
-        if (rank < lowest) {
-            return false;
+        if (people[i].rank === sortedPeople[i].rank) {
+            count++;
         }
-        lowest = rank;
     }
-    return true;
+    return count;
 };

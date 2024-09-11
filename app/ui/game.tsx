@@ -1,7 +1,7 @@
 'use client';
 
 import { Person } from '@/app/lib/definitions';
-import { Box, Badge, Button, Callout, Flex, Card } from '@radix-ui/themes';
+import { Badge, Button, Flex, Card } from '@radix-ui/themes';
 import { useState, useEffect, useRef } from 'react';
 import SortableList from './sortableList/sortableList';
 import { checkSubmission, shuffle } from '../lib/utils';
@@ -26,13 +26,13 @@ export default function Game({ people }: Props) {
     }, [people]);
 
     const handleSubmit = () => {
-        const submission = checkSubmission(sortedPeople);
-        if (submission) {
+        const numOfCorrect = checkSubmission(people, sortedPeople);
+        if (numOfCorrect === people.length) {
             console.log('correct');
             solutionDialogRef.current?.open();
         } else {
             console.log('incorrect');
-            incorrectDialogRef.current?.open();
+            incorrectDialogRef.current?.open(numOfCorrect);
         }
     };
 
