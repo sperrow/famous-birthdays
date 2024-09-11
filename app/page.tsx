@@ -1,111 +1,31 @@
-import { Box, Container, Flex, Grid, Heading } from '@radix-ui/themes';
-import Month from '@/app/ui/month';
+'use client';
 
-// list of objects with month names and child list of days
-const months = [
-    {
-        name: 'January',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'February',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-        ],
-    },
-    {
-        name: 'March',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'April',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30,
-        ],
-    },
-    {
-        name: 'May',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'June',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30,
-        ],
-    },
-    {
-        name: 'July',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'August',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'September',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30,
-        ],
-    },
-    {
-        name: 'October',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-    {
-        name: 'November',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30,
-        ],
-    },
-    {
-        name: 'December',
-        days: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-            30, 31,
-        ],
-    },
-];
+import Image from 'next/image';
+import { Card, Container, Flex, Heading } from '@radix-ui/themes';
+import DatePicker from '@/app/ui/datePicker';
 
 export default function Home() {
     return (
         <main>
-            <Box width="100vw" height="100vh">
-                <Container>
-                    <Flex direction="column" align="center" gap="2">
-                        <Heading as="h1" m="3">
+            <Container size="2" p="4">
+                <Card mb="4" className="drop-shadow-lg">
+                    <Flex align="start" justify="between" p="2">
+                        <Image
+                            src="/famous-birthdays-star-200.webp"
+                            alt="star"
+                            width="30"
+                            height="30"
+                            priority
+                            className="-scale-x-100"
+                        ></Image>
+                        <Heading as="h1" align="center">
                             Who is more famousbirthdays.com?
                         </Heading>
-                        <Grid columns={{ initial: '1', md: '3' }} gap="3" width="100%">
-                            {months.map((month) => (
-                                <Month key={month.name} month={month} />
-                            ))}
-                        </Grid>
-                        <Flex align="center" gap="2"></Flex>
+                        <Image src="/famous-birthdays-star-200.webp" alt="star" width="30" height="30" priority></Image>
                     </Flex>
-                </Container>
-            </Box>
+                </Card>
+                <DatePicker></DatePicker>
+            </Container>
         </main>
     );
 }
