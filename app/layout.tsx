@@ -22,9 +22,9 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <Theme accentColor="gray">
+                    <NavMenu />
                     {/* <div className="flex items-center justify-center pt-6 pb-8">
                         <div className="fixed w-full min-h-12 flex items-center justify-end px-6 shadow-sm dark:shadow-slate-800 bg-white dark:bg-black">
-                            <div className="flex items-center justify-end py-2 px-12">Home</div>
                             <NavMenu />
                         </div>
                     </div> */}
