@@ -20,7 +20,7 @@ export default function PersonBox({ person: { name, img, description, url }, idx
                 </Link>
                 <div className="ml-4 flex  align-center">
                     <Box p="2">
-                        <Link href={url} target="_blank">
+                        <Link href={url} target="_blank" className="hover:underline">
                             <Text as="div" size="2" weight="bold">
                                 {name}
                             </Text>

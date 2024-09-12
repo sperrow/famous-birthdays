@@ -6,6 +6,7 @@ import { Flex, Card, Container, Heading } from '@radix-ui/themes';
 import { useState, useEffect } from 'react';
 import NavMenu from './navMenu';
 import Game from './game';
+import Link from 'next/link';
 
 type Props = {
     people: Person[];
@@ -24,6 +25,7 @@ export default function GameContainer({ people, month, day }: Props) {
     }, []);
 
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
+    const url = `https://famousbirthdays.com/${month}${day}.html`;
 
     return (
         <Container size="2" p="4">
@@ -38,9 +40,15 @@ export default function GameContainer({ people, month, day }: Props) {
                         priority
                         className="-scale-x-100"
                     ></Image>
-                    <Heading as="h1" align="center">
-                        Who is more famousbirthdays.com on&nbsp;{capitalizedMonth}&nbsp;{day}?
-                    </Heading>
+                    <Flex direction="column" align="center">
+                        <Heading as="h1" align="center">
+                            Who is more famousbirthdays.com on{' '}
+                            <Link href={url} target="_blank" className="hover:underline">
+                                {capitalizedMonth} {day}
+                            </Link>
+                            ?
+                        </Heading>
+                    </Flex>
                     <Image src="/famous-birthdays-star-200.webp" alt="star" width="30" height="30" priority></Image>
                 </Flex>
             </Card>
