@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { fetchBirthdays } from '@/app/lib/data';
 // import { notFound } from 'next/navigation';
 

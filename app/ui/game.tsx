@@ -40,6 +40,10 @@ export default function Game({ people, includeInfluencers }: Props) {
         }
     };
 
+    if (sortedPeople.length === 0) {
+        return null;
+    }
+
     return (
         <>
             <div className="mt-8 flex justify-center">
