@@ -5,7 +5,7 @@ import { fetchBirthdays } from '@/app/lib/data';
 // import { Metadata } from 'next';
 import { Card, Container, Flex, Heading } from '@radix-ui/themes';
 import Game from '@/app/ui/game';
-import { randomize } from '@/app/lib/utils';
+import NavMenu from '@/app/ui/navMenu';
 
 // export const metadata: Metadata = {
 //     title: 'Famous Birthdays',
@@ -14,16 +14,16 @@ import { randomize } from '@/app/lib/utils';
 export default async function Page({ params: { day, month } }: { params: { day: string; month: string } }) {
     const date = month.toLowerCase() + day;
 
-    let people = await fetchBirthdays(date);
+    const people = await fetchBirthdays(date);
     if (!people) {
         console.log('no data');
     }
-    people = randomize(people);
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
 
     return (
         <main className="">
             <Container size="2" p="4">
+                <NavMenu />
                 <Card mb="4" className="drop-shadow-lg">
                     <Flex align="start" justify="between" p="2">
                         <Image

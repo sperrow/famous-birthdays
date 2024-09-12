@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes';
 import { ThemeProvider } from 'next-themes';
-import NavMenu from './ui/navMenu';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -19,16 +18,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className={inter.className}>
                 <Theme accentColor="gray">
-                    <NavMenu />
-                    {/* <div className="flex items-center justify-center pt-6 pb-8">
-                        <div className="fixed w-full min-h-12 flex items-center justify-end px-6 shadow-sm dark:shadow-slate-800 bg-white dark:bg-black">
-                            <NavMenu />
-                        </div>
-                    </div> */}
-                    {children}
+                    <ThemeProvider attribute="class">{children}</ThemeProvider>
                 </Theme>
             </body>
         </html>

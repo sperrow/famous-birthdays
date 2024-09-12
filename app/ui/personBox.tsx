@@ -1,5 +1,3 @@
-'use client';
-
 import { Person } from '@/app/lib/definitions';
 import { Avatar, Text, Box } from '@radix-ui/themes';
 import Link from 'next/link';
@@ -17,12 +15,12 @@ export default function PersonBox({ person: { name, img, description, url }, idx
     return (
         <Box className="grow">
             <div className="flex ">
-                <Link href={url}>
+                <Link href={url} target="_blank">
                     <Avatar size="6" radius="none" src={img} fallback={name[0]} className="drop-shadow-lg" />
                 </Link>
                 <div className="ml-4 flex  align-center">
                     <Box p="2">
-                        <Link href={url}>
+                        <Link href={url} target="_blank">
                             <Text as="div" size="2" weight="bold">
                                 {name}
                             </Text>

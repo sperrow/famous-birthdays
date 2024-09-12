@@ -1,14 +1,22 @@
 import { Person } from './definitions';
 
-export const filterBirthdays = (people: Person[]) => {
+export const formatPeople = (people: Person[], includeInfluencers = false) => {
+    const formattedPeople = filterPeople(people, includeInfluencers);
+    return randomize(formattedPeople);
+};
+
+const influencers = ['youtube', 'instagram', 'tiktok', 'family'];
+
+const filterPeople = (people: Person[], includeInfluencers = false) => {
     return people.filter((person) => {
         if (person.img?.includes('default')) {
             return false;
         }
-        const websites = ['youtube', 'instagram', 'tiktok', 'family'];
-        const ignore = websites.some((item) => person.description.toLowerCase().includes(item));
-        if (ignore) {
-            return false;
+        if (!includeInfluencers) {
+            const ignore = influencers.some((item) => person.description.toLowerCase().includes(item));
+            if (ignore) {
+                return false;
+            }
         }
         return true;
     });
@@ -19,7 +27,7 @@ export const filterBirthdays = (people: Person[]) => {
  * @param people
  * @returns array of people
  */
-export const randomize = (people: Person[]) => {
+const randomize = (people: Person[]) => {
     const result = [];
     const first = Math.floor(Math.random() * 10);
     let second = Math.floor(Math.random() * 10);
@@ -41,7 +49,7 @@ export const randomize = (people: Person[]) => {
 /**
  * Shuffle array of people
  * @param people
- * @returns shuffled array
+ * @returns shuffled copy of array
  */
 export const shuffle = (people: Person[]) => {
     return people.slice().sort(() => 0.5 - Math.random());

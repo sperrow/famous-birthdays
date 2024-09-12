@@ -3,11 +3,13 @@
 import Image from 'next/image';
 import { Card, Container, Flex, Heading } from '@radix-ui/themes';
 import DatePicker from '@/app/ui/datePicker';
+import NavMenu from '@/app/ui/navMenu';
 
 export default function Home() {
     return (
         <main>
             <Container size="2" p="4">
+                <NavMenu />
                 <Card mb="4" className="drop-shadow-lg">
                     <Flex align="start" justify="between" p="2">
                         <Image

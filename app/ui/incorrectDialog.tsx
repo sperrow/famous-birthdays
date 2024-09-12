@@ -29,7 +29,7 @@ const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
 
             <Dialog.Content size="3" maxWidth="450px" aria-describedby={undefined} className="text-center">
                 <Dialog.Title>Incorrect</Dialog.Title>
-                <Text>{`You have ${numOfCorrect}/4 correct, try again`}</Text>
+                <Text>{`You have ${numOfCorrect}/4 correct, try again!`}</Text>
             </Dialog.Content>
         </Dialog.Root>
     );

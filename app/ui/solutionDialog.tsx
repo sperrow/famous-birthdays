@@ -13,9 +13,6 @@ export type SolutionDialogRef = {
     open: () => void;
 };
 
-// const colors = ['bg-yellow-300', 'bg-yellow-200', 'bg-yellow-100', 'bg-yellow-50'];
-const colors = ['bg-yellow-300'];
-
 const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [solved, setSolved] = useState(false);
@@ -47,10 +44,9 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
                 <Dialog.Title align="center">{title}</Dialog.Title>
 
                 <Flex direction="column" gap="3" py="4">
-                    {/* <ol className="flex flex-col"> */}
-                    <ol className="flex flex-col divide-y-2 divide-yellow-300 border-2 border-yellow-300">
+                    <ol className="flex flex-col divide-y-2 divide-yellow-300 border-2 border-yellow-300 dark:divide-yellow-500 dark:border-yellow-500">
                         {people.map((person, idx) => (
-                            <li key={idx} className={colors[idx]}>
+                            <li key={idx} className={idx === 0 ? 'bg-yellow-300 dark:bg-yellow-500' : ''}>
                                 <Flex p="4">
                                     <PersonBox person={person} idx={idx}></PersonBox>
                                     <Flex
