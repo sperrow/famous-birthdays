@@ -44,7 +44,7 @@ export default function GameContainer({ people, month, day }: Props) {
                         <Heading as="h1" align="center">
                             Who is more famousbirthdays.com on{' '}
                             <Link href={url} target="_blank" className="hover:underline">
-                                {capitalizedMonth} {day}
+                                {capitalizedMonth}&nbsp;{day}
                             </Link>
                             ?
                         </Heading>
