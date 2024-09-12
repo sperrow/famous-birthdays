@@ -12,9 +12,10 @@ import Item from '@/app/ui/sortableList/item';
 
 type Props = {
     people: Person[];
+    includeInfluencers: boolean;
 };
 
-export default function Game({ people }: Props) {
+export default function Game({ people, includeInfluencers }: Props) {
     const [solution, setSolution] = useState<Person[]>([]);
     const [sortedPeople, setSortedPeople] = useState<Person[]>([]);
     const solutionDialogRef = useRef<SolutionDialogRef>(null);
@@ -22,11 +23,11 @@ export default function Game({ people }: Props) {
 
     // Ensure that the component renders the same content server-side as it does during the initial client-side render to prevent a hydration mismatch.
     useEffect(() => {
-        const formattedPeople = formatPeople(people);
+        const formattedPeople = formatPeople(people, includeInfluencers);
         setSolution(formattedPeople);
         const shuffled = shuffle(formattedPeople);
         setSortedPeople(shuffled);
-    }, [people]);
+    }, [people, includeInfluencers]);
 
     const handleSubmit = () => {
         const numOfCorrect = checkSubmission(solution, sortedPeople);
