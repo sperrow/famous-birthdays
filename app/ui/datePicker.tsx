@@ -21,7 +21,7 @@ export default function DatePicker() {
     return (
         <Flex direction="column" align="center" gap="2" mt="8">
             <Select.Root onValueChange={handleMonthChange}>
-                <Select.Trigger placeholder="Select a month" />
+                <Select.Trigger color="crimson" variant="soft" placeholder="Select a month" />
                 <Select.Content>
                     <Select.Group>
                         <Select.Label>Months</Select.Label>
@@ -35,7 +35,7 @@ export default function DatePicker() {
             </Select.Root>
             {selectedMonth && (
                 <Select.Root onValueChange={handleDayChange}>
-                    <Select.Trigger placeholder="Select a day" />
+                    <Select.Trigger color="crimson" variant="soft" placeholder="Select a day" />
                     <Select.Content>
                         <Select.Group>
                             <Select.Label>Days</Select.Label>
