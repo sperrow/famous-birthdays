@@ -29,6 +29,7 @@ const filterPeople = (people: Person[], includeInfluencers = false) => {
  */
 const randomize = (people: Person[]) => {
     const result = [];
+    // #1 and #2 should be from 1-10
     const first = Math.floor(Math.random() * 10);
     let second = Math.floor(Math.random() * 10);
     while (first === second) {
@@ -36,6 +37,7 @@ const randomize = (people: Person[]) => {
     }
     result.push(people[first]);
     result.push(people[second]);
+    // #3 and #4 should be from 11-20
     const third = Math.floor(Math.random() * 10) + 10;
     let fourth = Math.floor(Math.random() * 10) + 10;
     while (third === fourth) {
