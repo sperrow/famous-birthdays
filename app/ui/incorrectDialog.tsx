@@ -1,4 +1,4 @@
-import { Button, Text, Dialog } from '@radix-ui/themes';
+import { Button, Text, Dialog, Flex } from '@radix-ui/themes';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
 interface Props {}
@@ -30,6 +30,13 @@ const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
             <Dialog.Content size="3" maxWidth="450px" aria-describedby={undefined} className="text-center">
                 <Dialog.Title>Incorrect</Dialog.Title>
                 <Text>{`You have ${numOfCorrect}/4 correct, try again!`}</Text>
+                <Flex gap="3" mt="4" justify="end">
+                    <Dialog.Close>
+                        <Button variant="soft" color="gray">
+                            Close
+                        </Button>
+                    </Dialog.Close>
+                </Flex>
             </Dialog.Content>
         </Dialog.Root>
     );
