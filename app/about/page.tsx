@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import { Card, Container, Flex, Heading, Blockquote, Text } from '@radix-ui/themes';
+import { Container, Flex, Blockquote, Text } from '@radix-ui/themes';
 import NavMenu from '@/app/ui/navMenu';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import Header from '@/app/ui/header';
 
 export const metadata: Metadata = {
     title: 'About',
@@ -13,22 +13,7 @@ export default function About() {
         <main>
             <Container size="2" p="4">
                 <NavMenu />
-                <Card mb="4" className="drop-shadow-lg">
-                    <Flex align="start" justify="between" p="2">
-                        <Image
-                            src="/famous-birthdays-star-200.webp"
-                            alt="star"
-                            width="30"
-                            height="30"
-                            priority
-                            className="-scale-x-100"
-                        ></Image>
-                        <Heading as="h1" align="center">
-                            Who is more famousbirthdays.com?
-                        </Heading>
-                        <Image src="/famous-birthdays-star-200.webp" alt="star" width="30" height="30" priority></Image>
-                    </Flex>
-                </Card>
+                <Header />
                 <Flex direction="column" gap="4" justify="center" my="8">
                     <Text>
                         As a fan of the{' '}
