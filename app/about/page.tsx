@@ -42,7 +42,7 @@ export default function About() {
                         But describing the game to someone who isn&apos;t familiar with the website has been
                         challenging—hopefully{' '}
                         <Link
-                            href="https://en.wikipedia.org/wiki/Famous_birthdays"
+                            href="https://en.wikipedia.org/wiki/Famous_Birthdays"
                             target="_blank"
                             className="font-semibold hover:underline"
                         >
