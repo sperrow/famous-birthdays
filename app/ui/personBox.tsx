@@ -7,14 +7,10 @@ type Props = {
     idx: number;
 };
 
-export default function PersonBox({ person: { name, img, description, url }, idx }: Props) {
-    const colors = ['bg-purple-500', 'bg-purple-300', 'bg-purple-100', 'bg-white'];
-    const bg = colors[idx];
-    const classes = `${bg} drop-shadow-lg`;
-
+export default function PersonBox({ person: { name, img, description, url } }: Props) {
     return (
         <Box className="grow">
-            <div className="flex ">
+            <div className="flex">
                 <Link href={url} target="_blank">
                     <Avatar size="6" radius="none" src={img} fallback={name[0]} className="drop-shadow-lg" />
                 </Link>
