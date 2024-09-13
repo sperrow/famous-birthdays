@@ -8,8 +8,8 @@ import { ThemeProvider } from 'next-themes';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 export const metadata: Metadata = {
-    title: 'Who Is More Famous Birthdays Dot Com',
-    description: 'Who is more famous birthdays dot com?',
+    title: 'Who is more famousbirthdays.com?',
+    description: 'A game based on famousbirthdays.com, created by the Who? Weekly podcast.',
 };
 
 export default function RootLayout({

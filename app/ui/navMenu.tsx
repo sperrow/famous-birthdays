@@ -49,6 +49,8 @@ export default function NavMenu({ onChange }: Props) {
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content>
                         <DropdownMenu.Item onSelect={() => router.push('/')}>Home</DropdownMenu.Item>
+                        <DropdownMenu.Item onSelect={() => router.push('/about')}>About</DropdownMenu.Item>
+                        <DropdownMenu.Separator />
                         <DropdownMenu.Item onSelect={handleRandomDay} color="crimson">
                             Random day
                         </DropdownMenu.Item>

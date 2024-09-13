@@ -1,12 +1,7 @@
 import { fetchBirthdays } from '@/app/lib/data';
 // import { notFound } from 'next/navigation';
 
-// import { Metadata } from 'next';
 import GameContainer from '@/app/ui/gameContainer';
-
-// export const metadata: Metadata = {
-//     title: 'Famous Birthdays',
-// };
 
 export default async function Page({ params: { day, month } }: { params: { day: string; month: string } }) {
     const date = month.toLowerCase() + day;
