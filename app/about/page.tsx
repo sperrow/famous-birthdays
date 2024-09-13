@@ -20,8 +20,8 @@ export default function About() {
                         <Link href="https://www.whoweekly.us" target="_blank" className="font-semibold hover:underline">
                             Who? Weekly
                         </Link>{' '}
-                        podcast, I&apos;ve been enjoying the game &quot;Who is more famousbirthdays.com?&quot; every
-                        month and thought it&apos;d be fun to make an online version.
+                        podcast, I enjoy the game &quot;Who is more famousbirthdays.com?&quot; and thought it&apos;d be
+                        fun to make an online version.
                     </Text>
                     <Text>
                         But describing the game to someone who isn&apos;t familiar with the website has been
