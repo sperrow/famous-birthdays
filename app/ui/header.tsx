@@ -8,22 +8,18 @@ type Props = {
 };
 
 export default function Header({ month, day }: Props) {
-    let heading = (
-        <Heading as="h1" size="4" align="center">
-            Who is more famousbirthdays.com?
-        </Heading>
-    );
+    let content = <>Who is more famousbirthdays.com?</>;
     if (month && day) {
         const capitalizedMonth = month && day ? month.charAt(0).toUpperCase() + month.slice(1) : '';
         const url = `https://famousbirthdays.com/${month}${day}.html`;
-        heading = (
-            <Heading as="h1" size="4" align="center">
+        content = (
+            <>
                 Who is more famousbirthdays.com on{' '}
                 <Link href={url} target="_blank" className="hover:underline">
                     {capitalizedMonth}&nbsp;{day}
                 </Link>
                 ?
-            </Heading>
+            </>
         );
     }
     return (
@@ -38,7 +34,9 @@ export default function Header({ month, day }: Props) {
                     className="-scale-x-100"
                 ></Image>
                 <Flex direction="column" align="center">
-                    {heading}
+                    <Heading as="h1" align="center" size={{ initial: '4', md: '5' }}>
+                        {content}
+                    </Heading>
                 </Flex>
                 <Image src="/famous-birthdays-star-200.webp" alt="star" width="30" height="30" priority></Image>
             </Flex>
