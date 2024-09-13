@@ -2,7 +2,7 @@
 
 import { Flex, DropdownMenu, Button, Container } from '@radix-ui/themes';
 
-import { HamburgerMenuIcon } from '@radix-ui/react-icons';
+import { HamburgerMenuIcon, ShuffleIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { months } from '@/app/lib/definitions';
@@ -40,6 +40,9 @@ export default function NavMenu({ onChange }: Props) {
     return (
         <Container size="2" pb="4">
             <Flex justify="end" gap="3">
+                <Button size="1" variant="soft" onClick={handleRandomDay}>
+                    <ShuffleIcon /> Random day
+                </Button>
                 <ThemeChanger />
                 <DropdownMenu.Root>
                     <DropdownMenu.Trigger>
@@ -50,10 +53,6 @@ export default function NavMenu({ onChange }: Props) {
                     <DropdownMenu.Content>
                         <DropdownMenu.Item onSelect={() => router.push('/')}>Home</DropdownMenu.Item>
                         <DropdownMenu.Item onSelect={() => router.push('/about')}>About</DropdownMenu.Item>
-                        <DropdownMenu.Separator />
-                        <DropdownMenu.Item onSelect={handleRandomDay} color="crimson">
-                            Random day
-                        </DropdownMenu.Item>
                         <DropdownMenu.Separator />
                         <DropdownMenu.CheckboxItem checked={includeInfluencers} onCheckedChange={onChangeInfluencers}>
                             Include influencers?
