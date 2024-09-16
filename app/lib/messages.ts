@@ -19,6 +19,7 @@ export const incorrectMessages: Record<string, string[]> = {
         `Don't give up, this is really important information.`,
         `You gotta be bad. You gotta be bold. You gotta guess wiser.`,
         `You've got one hand in your pocket, and the other one is making the next guess.`,
+        `Yeah you're working, building a mystery. And choosing your next guess carefully.`,
     ],
     '2': [
         `Omg so close.`,
