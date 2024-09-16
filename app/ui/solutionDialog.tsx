@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Button, Flex, Text, Dialog } from '@radix-ui/themes';
+import { Button, Flex, Text, Dialog, Quote } from '@radix-ui/themes';
 import { Person } from '@/app/lib/definitions';
 import PersonBox from '@/app/ui/personBox';
 import { solutionMessages } from '../lib/messages';
@@ -75,7 +75,7 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
                     </ol>
                     {solved && (
                         <Text size="2" align="center" mt="4">
-                            {message}
+                            <Quote>{message}</Quote>
                         </Text>
                     )}
                 </Flex>
