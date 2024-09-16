@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Theme } from '@radix-ui/themes';
@@ -18,6 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <GoogleTagManager gtmId="GTM-54426C4S" />
             <body className={inter.variable}>
                 <Theme accentColor="gray">
                     <ThemeProvider attribute="class">{children}</ThemeProvider>
