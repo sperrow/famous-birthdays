@@ -5,7 +5,7 @@ export const formatPeople = (people: Person[], includeInfluencers = false) => {
     return randomize(formattedPeople);
 };
 
-const influencers = ['youtube', 'instagram', 'tiktok', 'family'];
+const influencers = ['youtube', 'instagram', 'tiktok', 'family', 'roblox'];
 
 const filterPeople = (people: Person[], includeInfluencers = false) => {
     return people.filter((person) => {

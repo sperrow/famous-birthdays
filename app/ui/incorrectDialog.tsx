@@ -1,5 +1,6 @@
 import { Button, Text, Dialog, Flex } from '@radix-ui/themes';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import { incorrectMessages } from '@/app/lib/messages';
 
 interface Props {}
 
@@ -10,11 +11,15 @@ export type IncorrectDialogRef = {
 const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     const [numOfCorrect, setNumOfCorrect] = useState(0);
+    const [message, setMessage] = useState('');
 
     useImperativeHandle(ref, () => ({
         open: (numOfCorrect: number) => {
             console.log(numOfCorrect);
             setNumOfCorrect(numOfCorrect);
+            setMessage(
+                incorrectMessages[numOfCorrect][Math.floor(Math.random() * incorrectMessages[numOfCorrect].length)]
+            );
             buttonRef.current?.click();
         },
     }));
@@ -29,7 +34,9 @@ const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
 
             <Dialog.Content size="3" maxWidth="450px" aria-describedby={undefined} className="text-center">
                 <Dialog.Title>Incorrect</Dialog.Title>
-                <Text>{`You have ${numOfCorrect}/4 correct, try again!`}</Text>
+                <Text>
+                    You have <span className="font-bold">{numOfCorrect}/4</span> correct. {message}
+                </Text>
                 <Flex gap="3" mt="4" justify="end">
                     <Dialog.Close>
                         <Button variant="soft" color="gray">

@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { Button, Flex, Text, Dialog } from '@radix-ui/themes';
-import { Person } from '../lib/definitions';
-import PersonBox from './personBox';
+import { Person } from '@/app/lib/definitions';
+import PersonBox from '@/app/ui/personBox';
+import { solutionMessages } from '../lib/messages';
 
 type Props = {
     people: Person[];
@@ -31,6 +32,7 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
     }
 
     const title = solved ? 'You got it!' : 'Who is more famousbirthdays.com?';
+    const message = solutionMessages[Math.floor(Math.random() * solutionMessages.length)];
 
     return (
         <Dialog.Root onOpenChange={handleOpenChange}>
@@ -71,6 +73,11 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
                             </li>
                         ))}
                     </ol>
+                    {solved && (
+                        <Text size="2" align="center" mt="4">
+                            {message}
+                        </Text>
+                    )}
                 </Flex>
 
                 <Flex gap="3" mt="4" justify="end">
