@@ -32,10 +32,8 @@ export default function Game({ people, includeInfluencers }: Props) {
     const handleSubmit = () => {
         const numOfCorrect = checkSubmission(solution, sortedPeople);
         if (numOfCorrect === solution.length) {
-            console.log('correct');
             solutionDialogRef.current?.open();
         } else {
-            console.log('incorrect');
             incorrectDialogRef.current?.open(numOfCorrect);
         }
     };

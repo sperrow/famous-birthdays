@@ -15,7 +15,6 @@ const IncorrectDialog = forwardRef<IncorrectDialogRef, Props>((_props, ref) => {
 
     useImperativeHandle(ref, () => ({
         open: (numOfCorrect: number) => {
-            console.log(numOfCorrect);
             setNumOfCorrect(numOfCorrect);
             setMessage(
                 incorrectMessages[numOfCorrect][Math.floor(Math.random() * incorrectMessages[numOfCorrect].length)]
