@@ -6,8 +6,6 @@ export const incorrectMessages: Record<string, string[]> = {
         `You're so far off, I think you might need a map to get back on track.`,
         `I'm assuming you were born before Y2K.`,
         `Try harder, show those teens you still have your finger on the pulse.`,
-        `You had a bad day. You're taking one down. But you sing a sad song just to turn it around.`,
-        `You get knocked down, but you get up again. They're never gonna keep you down.`,
     ],
     '1': [
         `A for effort! Sometimes guessing is just a matter of luck.`,
@@ -17,17 +15,11 @@ export const incorrectMessages: Record<string, string[]> = {
         `Admirable effort.`,
         `Not great but not terrible.`,
         `Don't give up, this is really important information.`,
-        `You gotta be bad. You gotta be bold. You gotta guess wiser.`,
-        `You've got one hand in your pocket, and the other one is making the next guess.`,
-        `Yeah you're working, building a mystery. And choosing your next guess carefully.`,
     ],
     '2': [
         `Omg so close.`,
         `Just a little nudge and you'll get it.`,
         `So close you can almost taste it. Release your inhibitions, feel the rain on your skin.`,
-        `On this perfect day, nothing's standing in your way.`,
-        `Don't you know things can change? Things'll go your best, if you hold on for one more guess.`,
-        `Ain't nothin' gonna break your stride. Nobody gonna slow you down.`,
     ],
 };
 
