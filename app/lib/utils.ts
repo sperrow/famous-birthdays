@@ -28,23 +28,22 @@ const filterPeople = (people: Person[], includeInfluencers = false) => {
  * @returns array of people
  */
 const randomize = (people: Person[]) => {
-    const result = [];
     // #1 and #2 should be from 1-10
     const first = Math.floor(Math.random() * 10);
     let second = Math.floor(Math.random() * 10);
     while (first === second) {
         second = Math.floor(Math.random() * 10);
     }
-    result.push(people[first]);
-    result.push(people[second]);
-    // #3 and #4 should be from 11-20
-    const third = Math.floor(Math.random() * 10) + 10;
-    let fourth = Math.floor(Math.random() * 10) + 10;
-    while (third === fourth) {
-        fourth = Math.floor(Math.random() * 10) + 10;
+    // #3 and #4 should be from 1-end
+    let third = Math.floor(Math.random() * people.length);
+    while (first === third || second === third) {
+        third = Math.floor(Math.random() * people.length);
     }
-    result.push(people[third]);
-    result.push(people[fourth]);
+    let fourth = Math.floor(Math.random() * people.length);
+    while (first === fourth || second === fourth || third === fourth) {
+        fourth = Math.floor(Math.random() * people.length);
+    }
+    const result = [people[first], people[second], people[third], people[fourth]];
     return result.sort((a, b) => parseInt(a.rank, 10) - parseInt(b.rank, 10));
 };
 
