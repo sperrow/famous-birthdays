@@ -1,4 +1,3 @@
-import axios from 'axios';
 import cheerio from 'cheerio';
 import { Person } from './definitions';
 
@@ -6,9 +5,10 @@ export async function getData(date: string) {
     const people: Person[] = [];
     try {
         // Fetch HTML of the page we want to scrape
-        const { data } = await axios.get(`https://www.famousbirthdays.com/${date}.html`);
+        const data = await fetch(`https://www.famousbirthdays.com/${date}.html`, { cache: 'force-cache' });
+        const page = await data.text();
         // Load HTML we fetched in the previous line
-        const $ = cheerio.load(data);
+        const $ = cheerio.load(page);
         // Select all the list items
         const peopleItems = $('.tile__item a');
         // Use .each method to loop through the elements we selected
