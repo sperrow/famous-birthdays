@@ -2,7 +2,7 @@
 
 import { Flex, DropdownMenu, Button, Container } from '@radix-ui/themes';
 
-import { HamburgerMenuIcon, ShuffleIcon } from '@radix-ui/react-icons';
+import { HamburgerMenuIcon, ShuffleIcon, CalendarIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { months } from '@/app/lib/definitions';
@@ -50,7 +50,7 @@ export default function NavMenu({ onChange }: Props) {
         <Container size="2" pb="4">
             <Flex justify="end" gap="3">
                 <Button size="1" variant="soft" onClick={handleToday}>
-                    Today
+                    <CalendarIcon /> Today
                 </Button>
                 <Button size="1" variant="soft" onClick={handleRandomDay}>
                     <ShuffleIcon /> Random day
