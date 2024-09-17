@@ -31,7 +31,7 @@ const SolutionDialog = forwardRef<SolutionDialogRef, Props>(({ people }, ref) =>
         }
     }
 
-    const title = solved ? 'You got it!' : 'Who is more famousbirthdays.com?';
+    const title = solved ? 'You got it!' : `Who's More FamousBirthdays.com?`;
     const message = solutionMessages[Math.floor(Math.random() * solutionMessages.length)];
 
     return (

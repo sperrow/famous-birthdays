@@ -8,7 +8,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 export const metadata: Metadata = {
-    title: 'Who is more famousbirthdays.com?',
+    title: `Who's More FamousBirthdays.com?`,
     description: 'A game based on famousbirthdays.com, created by the Who? Weekly podcast.',
 };
 

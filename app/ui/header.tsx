@@ -8,13 +8,13 @@ type Props = {
 };
 
 export default function Header({ month, day }: Props) {
-    let content = <>Who is more famousbirthdays.com?</>;
+    let content = <>Who&apos;s More FamousBirthdays.com?</>;
     if (month && day) {
         const capitalizedMonth = month && day ? month.charAt(0).toUpperCase() + month.slice(1) : '';
         const url = `https://famousbirthdays.com/${month}${day}.html`;
         content = (
             <>
-                Who is more famousbirthdays.com on{' '}
+                Who&apos;s More FamousBirthdays.com on{' '}
                 <Link href={url} target="_blank" className="hover:underline">
                     {capitalizedMonth}&nbsp;{day}
                 </Link>
