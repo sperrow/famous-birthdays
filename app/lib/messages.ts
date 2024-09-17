@@ -44,4 +44,5 @@ export const solutionMessages = [
     `RIP David Hasselhoff`,
     `ScarJo Yummy Pop`,
     `Me in Greece`,
+    `Grateful for Sharna`,
 ];
