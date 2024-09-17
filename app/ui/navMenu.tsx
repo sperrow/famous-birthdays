@@ -21,6 +21,15 @@ export default function NavMenu({ onChange }: Props) {
         setIncludeInfluencers(cache);
     }, []);
 
+    const handleToday = () => {
+        const today = new Date();
+        const month = months[today.getMonth()];
+        const day = today.getDate();
+        if (month && day) {
+            router.push(`/${month.name.toLowerCase()}/${day}`);
+        }
+    };
+
     const handleRandomDay = () => {
         const randomMonth = months[Math.floor(Math.random() * months.length)];
         const randomDay = randomMonth.days[Math.floor(Math.random() * randomMonth.days.length)];
@@ -40,6 +49,9 @@ export default function NavMenu({ onChange }: Props) {
     return (
         <Container size="2" pb="4">
             <Flex justify="end" gap="3">
+                <Button size="1" variant="soft" onClick={handleToday}>
+                    Today
+                </Button>
                 <Button size="1" variant="soft" onClick={handleRandomDay}>
                     <ShuffleIcon /> Random day
                 </Button>
