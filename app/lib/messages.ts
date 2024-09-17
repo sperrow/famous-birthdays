@@ -6,6 +6,7 @@ export const incorrectMessages: Record<string, string[]> = {
         `You're so far off, I think you might need a map to get back on track.`,
         `I'm assuming you were born before Y2K.`,
         `Try harder, show those teens you still have your finger on the pulse.`,
+        `No worries, you're just warming up.`,
     ],
     '1': [
         `A for effort! Sometimes guessing is just a matter of luck.`,
@@ -15,11 +16,16 @@ export const incorrectMessages: Record<string, string[]> = {
         `Admirable effort.`,
         `Not great but not terrible.`,
         `Don't give up, this is really important information.`,
+        `Nice! You're on the board now.`,
     ],
     '2': [
         `Omg so close.`,
         `Just a little nudge and you'll get it.`,
         `So close you can almost taste it. Release your inhibitions, feel the rain on your skin.`,
+        `You've got half of them and the rest are within reach.`,
+        `You're halfway there—keep it up.`,
+        `Two right answers—let's see if you can get the rest.`,
+        `You're on fire! Keep pushing.`,
     ],
 };
 
