@@ -53,7 +53,22 @@ const randomize = (people: Person[]) => {
  * @returns shuffled copy of array
  */
 export const shuffle = (people: Person[]) => {
-    return people.slice().sort(() => 0.5 - Math.random());
+    let shuffled;
+    while (shuffled == null || arraysEqual(people, shuffled)) {
+        shuffled = people.slice().sort(() => 0.5 - Math.random());
+    }
+    return shuffled;
+};
+
+// function to check if two arrays are equal
+const arraysEqual = (a: Person[], b: Person[]) => {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; ++i) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
 };
 
 /**
