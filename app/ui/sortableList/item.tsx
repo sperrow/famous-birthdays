@@ -8,7 +8,7 @@ export default function Item({ person: { name, img, description } }: Props) {
     return (
         <div className="flex items-center">
             <div className="flex items-stretch">
-                <Avatar size="6" radius="none" src={img} fallback={name[0]} className="drop-shadow-lg" />
+                <Avatar size="6" radius="none" src={img} fallback={name[0]} alt={name} className="drop-shadow-lg" />
                 <div className="ml-4 flex grow align-center">
                     <Box p="2">
                         <Text as="div" size="2" weight="bold">

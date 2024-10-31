@@ -12,7 +12,7 @@ export default function PersonBox({ person: { name, img, description, url } }: P
         <Box className="grow">
             <div className="flex">
                 <Link href={url} target="_blank">
-                    <Avatar size="6" radius="none" src={img} fallback={name[0]} className="drop-shadow-lg" />
+                    <Avatar size="6" radius="none" src={img} fallback={name[0]} alt={name} className="drop-shadow-lg" />
                 </Link>
                 <div className="ml-4 flex  align-center">
                     <Box p="2">
