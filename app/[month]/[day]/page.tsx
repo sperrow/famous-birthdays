@@ -12,7 +12,14 @@ export async function generateStaticParams() {
     });
 }
 
-export default async function Page({ params: { day, month } }: { params: { day: string; month: string } }) {
+export default async function Page(props: { params: Promise<{ day: string; month: string }> }) {
+    const params = await props.params;
+
+    const {
+        day,
+        month
+    } = params;
+
     const date = month.toLowerCase() + day;
     const people = await fetchBirthdays(date);
     if (!people) {
