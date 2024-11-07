@@ -5,7 +5,7 @@ export async function getData(date: string) {
     const people: Person[] = [];
     try {
         // Fetch HTML of the page we want to scrape
-        const data = await fetch(`https://www.famousbirthdays.com/${date}.html`, { cache: 'force-cache' });
+        const data = await fetch(`https://www.famousbirthdays.com/${date}.html`, { next: { revalidate: 86400 } });
         const page = await data.text();
         // Load HTML we fetched in the previous line
         const $ = cheerio.load(page);
