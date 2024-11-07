@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* font fix */
-@import '@radix-ui/themes/styles.css';
 
 :root {
     --foreground-rgb: 0, 0, 0;
