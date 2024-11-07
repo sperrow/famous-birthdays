@@ -16,15 +16,15 @@ export default function About() {
                 <Header />
                 <Flex direction="column" gap="4" justify="center" my="8">
                     <Text>
-                        As a fan of the{' '}
+                        This is an online version of the game &quot;Who&apos;s More FamousBirthdays.com?&quot; created
+                        by the{' '}
                         <Link href="https://www.whoweekly.us" target="_blank" className="font-semibold hover:underline">
                             Who? Weekly
                         </Link>{' '}
-                        podcast, I thought it&apos;d be fun to make an online version of the game &quot;Who&apos;s More
-                        FamousBirthdays.com?&quot;
+                        podcast.
                     </Text>
                     <Text>
-                        But describing the game to someone who isn&apos;t familiar with the website has been
+                        Describing the game to someone who isn&apos;t familiar with the website has been
                         challenging—hopefully{' '}
                         <Link
                             href="https://en.wikipedia.org/wiki/Famous_Birthdays"
@@ -67,7 +67,7 @@ export default function About() {
                         >
                             here
                         </Link>
-                        , thanks to Who? Weekly for the entertainment and for creating this deeply stupid game.
+                        , thanks to Who? Weekly for the entertainment and for making up this deeply stupid game.
                     </Text>
                 </Flex>
             </Container>
