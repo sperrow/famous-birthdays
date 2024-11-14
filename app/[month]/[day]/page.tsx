@@ -4,10 +4,12 @@ import { months } from '@/app/lib/definitions';
 
 import GameContainer from '@/app/ui/gameContainer';
 
+export const dynamicParams = false;
+
 // Return a list of `params` to populate the [month]/[day] dynamic segment
 export async function generateStaticParams() {
     return months.flatMap((month) => {
-        const result = month.days.map((day) => ({ day: String(day), month: month.name }));
+        const result = month.days.map((day) => ({ day: String(day), month: month.name.toLowerCase() }));
         return result;
     });
 }
@@ -15,10 +17,7 @@ export async function generateStaticParams() {
 export default async function Page(props: { params: Promise<{ day: string; month: string }> }) {
     const params = await props.params;
 
-    const {
-        day,
-        month
-    } = params;
+    const { day, month } = params;
 
     const date = month.toLowerCase() + day;
     const people = await fetchBirthdays(date);
