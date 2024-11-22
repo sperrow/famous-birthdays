@@ -1,5 +1,6 @@
 import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import { Theme } from '@radix-ui/themes';
 import { ThemeProvider } from 'next-themes';
@@ -25,6 +26,7 @@ export default function RootLayout({
                 <Theme accentColor="gray">
                     <ThemeProvider attribute="class">{children}</ThemeProvider>
                 </Theme>
+                <SpeedInsights />
             </body>
         </html>
     );
